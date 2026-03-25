@@ -1,7 +1,10 @@
 import { default as axios } from "axios";
 import express from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
 const app = express();
-const port = require("dotenv").config().parsed.PORT;
+const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
@@ -24,7 +27,7 @@ app.get("/gitdetails", async (req, res) => {
         const gitDetailsRes = await axios.get(
             "https://api.github.com/users/Soumya-0x000"
         );
-        res.json(gitDetailsRes.data);
+        res.status(200).json({ data: gitDetailsRes.data });
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal Server Error");
@@ -39,6 +42,15 @@ app.get("/portfolio", (req, res) => {
     res.redirect("https://ssd-portfolio.vercel.app/");
 });
 
-app.listen(port, () => {
-    console.log(`app listening on port ${port}`);
+app.get("/getalllinks", (req, res) => {
+    res.json({
+        github: "https://github.com/Soumya-0x000",
+        gitdetails: "https://api.github.com/users/Soumya-0x000",
+        portfolio: "https://ssd-portfolio.vercel.app/",
+        contact: "https://ssd-portfolio.vercel.app/contact",
+    });
+});
+
+app.listen(PORT, () => {
+    console.log(`app listening on port ${PORT}`);
 });
