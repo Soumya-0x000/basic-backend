@@ -3,7 +3,7 @@
   "rank": "auntit17745366742381",
   "request": {
     "type": "http",
-    "url": "http://localhost:4000/notes/",
+    "url": "http://localhost:4000/api/notes/",
     "scripts": {
       "preRequest": "",
       "postResponse": ""
@@ -11,7 +11,7 @@
     "method": "GET",
     "queryParams": [],
     "headers": [],
-    "body": "{\n  \"title\": \"hii\",\n  \"desc\": \"hii desc\"\n}",
+    "body": "{\n  \"title\": \"Structured Task updated\"\n}",
     "contentType": "application/json",
     "auth": {
       "currentAuthType": "INHERIT",
